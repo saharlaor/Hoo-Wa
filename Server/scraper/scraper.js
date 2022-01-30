@@ -13,11 +13,12 @@ async function getLanguages(browser) {
       return { url: href, name: innerText };
     });
   });
+  await page.close();
   return languages;
 }
 
 async function getLanguageSongs(browser, languages) {
-  const songList = languages.slice(0, 4).map(async ({ url, name }) => {
+  const songList = languages.map(async ({ url, name }) => {
     const page = await browser.newPage();
     await page.goto(url);
 
@@ -27,15 +28,21 @@ async function getLanguageSongs(browser, languages) {
     if (!(links instanceof Array)) return console.log("Didn't find links");
     if (links.length === 0) return console.log("array is empty no links");
 
-    const newLinks = links.map(async (link) => {
-      const originalTitle = await link.$eval(
-        "h2",
-        ({ innerText }) => innerText
-      );
-      const englishTitle = await link.$eval("p", ({ innerText }) => innerText);
-      // console.log("englishTitle", englishTitle);
-      return { url: link.href, originalTitle, englishTitle, language: name };
-    });
+    const newLinks = await Promise.allSettled(
+      links.map(async (link) => {
+        const originalTitle = await link.$eval(
+          "h2",
+          ({ innerText }) => innerText
+        );
+        const englishTitle = await link.$eval(
+          "p",
+          ({ innerText }) => innerText
+        );
+        const href = await (await link.getProperty("href")).jsonValue();
+        return { url: href, originalTitle, englishTitle, language: name };
+      })
+    );
+    await page.close();
     return newLinks;
   });
   return songList;
@@ -72,16 +79,21 @@ async function main() {
 
   // Get a language list
   const languages = await getLanguages(browser);
+  const filteredLanguages = languages.filter((lang) =>
+    ["Arabic", "English", "Hebrew", "Russian", "Yiddish", "Amharic"].includes(
+      lang.name
+    )
+  );
 
   // Get a song list from given languages
-  const songs = await Promise.all(await getLanguageSongs(browser, languages))
-    .then((req) => {
-      const data = req.flat(3);
-      return data;
-    })
-    .then((songArr) => {
-      return songArr;
-    });
+  const songsPromiseArr = await getLanguageSongs(browser, filteredLanguages);
+  const songs = (await Promise.allSettled(songsPromiseArr))
+    .map(({ value }) =>
+      value
+        .filter(({ status }) => status === "fulfilled")
+        .map(({ value }) => value)
+    )
+    .flat();
 
   // TODO: getSongContent
 
