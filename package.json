@@ -1,0 +1,24 @@
+{
+  "name": "hoo-wa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saharlaor/Hoo-Wa.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saharlaor/Hoo-Wa/issues"
+  },
+  "homepage": "https://github.com/saharlaor/Hoo-Wa#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.1.8",
+    "puppeteer": "^13.1.2"
+  }
+}
