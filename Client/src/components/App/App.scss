@@ -199,3 +199,42 @@
   }
   
 }
+
+// Homepage
+.home-page{
+  width:100%;
+  height: 90vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.sidebar{
+  width: 25%;
+  height: 50vh;
+  text-align: center;
+  background-color:#EE82EE;
+  margin-top: 1rem;
+  
+}
+.sidebar > img{
+  width: 20vw;
+  height: 30vh;
+}
+
+.sidebar > p {
+  font-size: 1.25rem;
+  font-style: italic;
+  padding-bottom: 0.5em;
+}
+.sidebar > button {
+  font-size: 1.25rem;
+  border-radius: 10px;
+  transition: var(--transition);
+  background-color: 	#9932CC;
+  cursor: pointer;
+}
+
+.sidebar > button:hover {
+  color: #D3D3D3
+}
