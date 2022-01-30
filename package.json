@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/headless.js",
+    "server": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +19,16 @@
   },
   "homepage": "https://github.com/saharlaor/Hoo-Wa#readme",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
     "express": "^4.17.2",
+    "mongodb": "^4.3.1",
     "mongoose": "^6.1.8",
-    "puppeteer": "^13.1.2"
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "puppeteer": "^13.1.2",
+    "validator": "^13.7.0"
   }
 }
