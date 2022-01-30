@@ -1,35 +1,58 @@
-import React, { useState } from 'react';
-import onClickOutside from 'react-onclickoutside';
+import React, { useState } from "react";
+import onClickOutside from "react-onclickoutside";
 
 function Dropdown({ title, items, multiSelect = false }) {
   const [open, setOpen] = useState(false);
-  const [selection, setSelection] = useState([]);
+  const [languages, setLanguages] = useState([]);
   const toggle = () => setOpen(!open);
   Dropdown.handleClickOutside = () => setOpen(false);
 
-  function handleOnClick(item) {
-    if (!selection.some(current => current.id === item.id)) {
+  const singleLanguage = (language) => setLanguages([language]);
+  const multiLanguages = (language) => setLanguages([...languages, language]);
+  const removeLanguage = (language) => {
+    const newLanguagesSelected = languages.filter(
+      (currentLanguage) => currentLanguage.id === language.id
+    );
+    setLanguages(newLanguagesSelected);
+  };
+
+  const renderLanguages = (language) => {
+    const { value, id } = language;
+    return (
+      <li className="dd-list-item" key={id}>
+        <button onClick={() => handleOnClick(language)}>
+          <span>{value}</span>
+          <span>{isLanguageInSelection(language) && "Selected"}</span>
+        </button>
+      </li>
+    );
+  };
+
+  function handleOnClick(language) {
+    const isLanguageExist = languages.some(
+      (currentLanguage) => currentLanguage.id === language.id
+    );
+    if (!isLanguageExist) {
       if (!multiSelect) {
-        setSelection([item]);
+        singleLanguage(language);
       } else if (multiSelect) {
-        setSelection([...selection, item]);
+        multiLanguages(language);
       }
     } else {
-      let selectionAfterRemoval = selection;
-      selectionAfterRemoval = selectionAfterRemoval.filter(
-        current => current.id !== item.id
-      );
-      setSelection([...selectionAfterRemoval]);
+      removeLanguage(languages);
     }
   }
 
   // Check if each item is selected
-  function isItemInSelection(item) {
-    if (selection.some(current => current.id === item.id)) {
-      return true;
-    }
+  function isLanguageInSelection(language) {
+    const isLanguageExist = languages.some(
+      (currentLanguage) => currentLanguage.id === language.id
+    );
+    if (isLanguageExist) return true;
+
     return false;
   }
+
 
   return (
     <div className="dd-wrapper">
@@ -37,28 +60,17 @@ function Dropdown({ title, items, multiSelect = false }) {
         tabIndex={0}
         className="dd-header"
         role="button"
-        onKeyPress={() => toggle(!open)}
-        onClick={() => toggle(!open)}
+        onKeyPress={toggle}
+        onClick={toggle}
       >
         <div className="dd-header__title">
           <p className="dd-header__title--bold">{title}</p>
         </div>
         <div className="dd-header__action">
-          <p>{open ? 'Close' : 'Open'}</p>
+          <p>{open ? "Close" : "Open"}</p>
         </div>
       </div>
-      {open && (
-        <ul className="dd-list">
-          {items.map(item => (
-            <li className="dd-list-item" key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
-                <span>{item.value}</span>
-                <span>{isItemInSelection(item) && 'Selected'}</span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+      {open && <ul className="dd-list"> {items.map(renderLanguages)} </ul>}
     </div>
   );
 }
