@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Dropdown from '../Dropdown/Dropdown';
+import Navbar from '../Navbar/Navbar';
 
 const items = [
   {
@@ -20,6 +21,7 @@ const items = [
 function App() {
   return (
     <div className="container">
+      <Navbar />
       <h1 style={{ textAlign: 'center' }}>
        Mama Lisa
       </h1>
