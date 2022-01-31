@@ -1,8 +1,52 @@
-import React from "react";
-import "./App.css";
+import React from 'react';
+import './App.scss';
+import Dropdown from '../Dropdown/Dropdown';
+import Navbar from '../Navbar/Navbar';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from '../Home/Home';
+import Song from '../Song/Song'
+import SongCard from '../SongCard/SongCard'
+import Category from '../Category/Category';
+
+const items = [
+  {
+    id: "he",
+    value: 'Hebrew',
+  },
+  {
+    id: "ar",
+    value: 'Arabic',
+  },
+  {
+    id: "en",
+    value: 'English',
+  },
+  {
+      id: "ru",
+      value: 'Russian',
+    },
+    {
+      id: "am",
+      value: 'Amharic',
+    }
+];
+
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="container">
+      
+      <BrowserRouter>
+      <Navbar />
+      
+      <Dropdown title="Select Language" items={items} multiSelect />
+      <Route path="/" exact component={Home}>
+
+      </Route>
+        <Category />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
