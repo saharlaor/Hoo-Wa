@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SongCard from "../../SongCard/SongCard";
+import SongCard from "../SongCard/SongCard";
 
 const list = [
   {

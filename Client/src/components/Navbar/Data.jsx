@@ -14,6 +14,11 @@ export const links = [
       url: '/projects',
       text: 'projects',
     },
+    {
+      id: 4,
+      url: '/songs',
+      text: 'songs',
+    },
    
   ];
   
