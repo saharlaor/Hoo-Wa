@@ -6,20 +6,17 @@ app.use(express.json());
 
 const getData = async (id) => {
   let songs = id ? await Song.findById(id) : await Song.find({});
-  console.log("songs", songs);
-
   return songs;
 };
 
 const getSongs = async (req, res) => {
   try {
     const songs = await getData();
-    if (!songs[0]) return res.status(404).send("No Songs found");
-
+    console.log(songs);
+    if (!songs.length) throw Error("No Songs found");
     res.send(songs);
   } catch (e) {
-    res.status(500).send(e.message);
-    console.log(e);
+    res.send({ ERROR: e });
   }
 };
 
@@ -36,8 +33,22 @@ const getSong = async (req, res) => {
   }
 };
 const postSong = async (req, res) => {
+  const {
+    originalTitle,
+    translatedTitle,
+    url,
+    originalLyrics,
+    translatedLyrics,
+  } = req.body;
   try {
-    const song = await new Song(req.body);
+    const songBody = {
+      originalTitle,
+      translatedTitle,
+      url,
+      originalLyrics,
+      translatedLyrics,
+    };
+    const song = await new Song(songBody);
     await song.save();
     res.status(201).send(song);
   } catch (e) {
