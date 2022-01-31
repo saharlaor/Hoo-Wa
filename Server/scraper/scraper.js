@@ -48,6 +48,48 @@ async function getLanguageSongs(browser, languages) {
   return songList;
 }
 
+async function getSongContent(browser, songs) {
+  const songsContent = (
+    await Promise.allSettled(
+      songs.map(async (songDetails) => {
+        const page = await browser.newPage();
+        await page.goto(songDetails.url);
+
+        const originalLyricsEl = await getSelector(
+          page,
+          "#lyrics_original_language_lg"
+        );
+        const englishLyricsEl = await getSelector(
+          page,
+          "#lyrics_translation_lg"
+        );
+
+        const originalLyrics = await (
+          await originalLyricsEl.getProperty("textContent")
+        ).jsonValue();
+        const englishLyrics = await (
+          await englishLyricsEl.getProperty("textContent")
+        ).jsonValue();
+
+        const song = {
+          originalTitle: songDetails.originalTitle,
+          originalLyrics: originalLyrics,
+          englishTitle: songDetails.englishTitle,
+          englishLyrics: englishLyrics,
+          language: songDetails.language,
+        };
+        await page.close();
+        return song;
+      })
+    )
+  ).map(({ value }) => {
+    if (!value) return {};
+    return value;
+  });
+  console.log("songsContent", songsContent);
+  return songsContent;
+}
+
 //! Test
 // const langSongs = await page.evaluate(async () => {
 //   const links = await page.$$();
@@ -80,22 +122,23 @@ async function main() {
   // Get a language list
   const languages = await getLanguages(browser);
   const filteredLanguages = languages.filter((lang) =>
-    ["Arabic", "English", "Hebrew", "Russian", "Yiddish", "Amharic"].includes(
-      lang.name
-    )
+    ["Arabic", "English", "Hebrew", "Russian", "Amharic"].includes(lang.name)
   );
 
   // Get a song list from given languages
   const songsPromiseArr = await getLanguageSongs(browser, filteredLanguages);
-  const songs = (await Promise.allSettled(songsPromiseArr))
-    .map(({ value }) =>
-      value
+  const songList = (await Promise.allSettled(songsPromiseArr))
+    .map(({ value }) => {
+      if (!value) return {};
+      return value
         .filter(({ status }) => status === "fulfilled")
-        .map(({ value }) => value)
-    )
+        .map(({ value }) => value);
+    })
     .flat();
 
-  // TODO: getSongContent
+  // Get all songs' content
+  const songs = await getSongContent(browser, songList);
+  console.log("songs", songs);
 
   // TODO: Save to DB
 
