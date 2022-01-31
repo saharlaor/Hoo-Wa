@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/saharlaor/Hoo-Wa#readme",
   "dependencies": {
+    "axios": "^0.25.0",
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
     "puppeteer": "^13.1.2"
