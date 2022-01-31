@@ -239,6 +239,17 @@
   color: #D3D3D3
 }
 
+.home-text{
+  width: 50%;
+  height: 20vh;
+  margin-top: 2rem;
+  margin-right: 24rem;
+  font-size: 2rem;
+  line-height: 3.5rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
 @media screen and (max-width: 800px) {
   .sidebar{
     width: 50%;

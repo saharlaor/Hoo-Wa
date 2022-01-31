@@ -9,18 +9,27 @@ import SongCard from '../SongCard/SongCard'
 
 const items = [
   {
-    id: 1,
+    id: "he",
     value: 'Hebrew',
   },
   {
-    id: 2,
+    id: "ar",
     value: 'Arabic',
   },
   {
-    id: 3,
+    id: "en",
     value: 'English',
   },
+  {
+      id: "ru",
+      value: 'Russian',
+    },
+    {
+      id: "am",
+      value: 'Amharic',
+    }
 ];
+
 
 function App() {
   return (
@@ -28,9 +37,7 @@ function App() {
       
       <BrowserRouter>
       <Navbar />
-      <h1 style={{ textAlign: 'center' }}>
-       Mama Lisa
-      </h1>
+      
       <Dropdown title="Select Language" items={items} multiSelect />
       <Route path="/" exact component={Home}>
 
