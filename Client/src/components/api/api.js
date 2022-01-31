@@ -39,7 +39,7 @@ const getTranslation = async (
     responseType: "json",
   });
 
-  return res.data[0].translations[0].text;
+  return res.data[0].translations[0];
 };
 //   <div dir="rtl" style="..."> to print hebrew/arabic
 //getTranslation("en","he","big bunny went to bed").then(x =>{ console.log(x) } );

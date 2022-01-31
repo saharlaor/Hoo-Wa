@@ -1,11 +1,11 @@
 import { getTranslation } from "./api";
 import React, { useState } from "react";
+import {switchCode} from "./langUtil";
 
 export default function App() {
   const [sourceLanguage, setSourceLanguage] = useState("");
   const [targetLanguage, setTargetLanguage] = useState("");
   const [enteredText, setEnteredText] = useState("");
-
   const [translatedText, setTranslatedText] = useState("");
 
   const onSubmit = async (e) => {
@@ -16,22 +16,17 @@ export default function App() {
       targetLanguage,
       enteredText
     );
-
     setTranslatedText(translation.text);
   };
-
   const onChangeSourceLanguage = (e) => {
-    setSourceLanguage(e.target.value);
+    setSourceLanguage(switchCode(e.languege));
   };
-
   const onChangeTargetLanguage = (e) => {
-    setTargetLanguage(e.target.value);
+    setTargetLanguage(e.target.id);
   };
-
   const onChangeEnteredText = (e) => {
-    setEnteredText(e.target.value);
+    setEnteredText(e.value);
   };
-
   return (
    "moo"
   );
