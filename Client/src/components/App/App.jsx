@@ -4,6 +4,8 @@ import Dropdown from '../Dropdown/Dropdown';
 import Navbar from '../Navbar/Navbar';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from '../Home/Home';
+import Song from '../Song/Song'
+import SongCard from '../SongCard/SongCard'
 
 const items = [
   {
@@ -33,7 +35,7 @@ function App() {
       <Route path="/" exact component={Home}>
 
       </Route>
-
+        {/* <Song /> */}
       </BrowserRouter>
     </div>
   );

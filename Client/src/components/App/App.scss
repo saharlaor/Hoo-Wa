@@ -1,5 +1,6 @@
 
    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+   @import url('https://fonts.googleapis.com/css2?family=Barlow&family=Calligraffitti&family=PT+Sans&family=Poppins&display=swap');
 
    
    html {
@@ -236,4 +237,14 @@
 
 .sidebar > button:hover {
   color: #D3D3D3
+}
+
+// Song---------------------------------------------
+.flex-container{
+  border: 2px solid white;
+  width: 20%;
+  height: 30vh;
+  text-align: center;
+  background-color: #fdeded;
+  font-family: 'Poppins', sans-serif;
 }
