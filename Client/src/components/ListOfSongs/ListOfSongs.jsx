@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import SongCard from "../SongCard/SongCard";
 import axios from "axios";
 
-
-
 const ListOfSongs = () => {
   const [songsList, setSongsList] = useState([]);
 
   useEffect(() => {
     async function getSongs() {
-      const { data: songs } = await axios.get("http://localhost:5555/songs");
+      const { data: songs } = await axios.get(
+        "http://localhost:5555/country/songs"
+      );
+      console.log(songs);
+      if (!(songs instanceof Array)) return () => false;
       setSongsList(songs);
     }
     getSongs();
   }, []);
 
+  console.log(songsList);
   // const list = [
   //   {
   //     title: "Hello World",
@@ -23,7 +26,7 @@ const ListOfSongs = () => {
   //   },
   // ];
 
-  // this was the template 
+  // this was the template
 
   return (
     <>
