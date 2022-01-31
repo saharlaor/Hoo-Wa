@@ -2,7 +2,7 @@ import { getTranslation } from "./api";
 import React, { useState } from "react";
 
 
-export default function App() {
+export default function Translation() {
   const [sourceLanguage, setSourceLanguage] = useState("");
   const [targetLanguage, setTargetLanguage] = useState("");
   const [enteredText, setEnteredText] = useState("");
@@ -28,7 +28,7 @@ export default function App() {
     setEnteredText(e.value);
   };
   return (
-   "moo"
+    translation
   );
 }
 

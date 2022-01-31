@@ -19,6 +19,7 @@
   "dependencies": {
     "express": "^4.17.2",
     "mongoose": "^6.1.8",
-    "puppeteer": "^13.1.2"
+    "puppeteer": "^13.1.2",
+    "react-router-dom": "^6.2.1"
   }
 }
