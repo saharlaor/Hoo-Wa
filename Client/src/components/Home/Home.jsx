@@ -4,7 +4,7 @@ const Home = () => {
   return <div className='home-page'>
 
     <div className='home-text'>
-    Music is a universal aspect of human existence. From the biggest cities to the most remote villages, the driest deserts to the wettest rainforests, the heights of the Himalayas to the depths of the Dead Sea, music is, and always has been, a part of daily life for people around the world. Every culture throughout history has created music, and that musical heritage has become an inseparable part of who we are as individuals and as communities. Here are three ways music brings people together, both within cultures and across cultural borders:
+    Music is a universal aspect of human existence. From the biggest cities to the most remote villages, the driest deserts to the wettest rainforests, the heights of the Himalayas to the depths of the Dead Sea, music is, and always has been, a part of daily life for people around the world. Every culture throughout history has created music, and that musical heritage has become an inseparable part of who we are as individuals and as communities. Here are three ways music brings people together, both within cultures and across cultural borders.
 
     </div>
       <div className='sidebar'>

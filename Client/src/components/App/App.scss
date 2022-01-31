@@ -271,3 +271,27 @@
   background-color: #fdeded;
   font-family: 'Poppins', sans-serif;
 }
+
+// Category
+.cat-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+.cat-card {
+  border: 2px solid white;
+  height: 5vh;
+  width: 20%;
+  transition: var(--transition);
+  text-indent: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cat-card:hover {
+  background-color: #f3f3f3;
+}
