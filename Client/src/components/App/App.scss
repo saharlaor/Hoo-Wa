@@ -239,6 +239,18 @@
   color: #D3D3D3
 }
 
+@media screen and (max-width: 800px) {
+  .sidebar{
+    width: 50%;
+  }
+  .sidebar > img {
+    width: 80%;
+  }
+  .sidebar > h5 {
+    margin-top: -1rem;
+  }
+}
+
 // Song---------------------------------------------
 .flex-container{
   border: 2px solid white;

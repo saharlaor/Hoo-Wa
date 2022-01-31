@@ -6,13 +6,13 @@ export const links = [
     },
     {
       id: 2,
-      url: '/about',
-      text: 'about',
+      url: '/countries',
+      text: 'Countries',
     },
     {
       id: 3,
-      url: '/projects',
-      text: 'projects',
+      url: '/blog',
+      text: 'blog',
     },
    
   ];
