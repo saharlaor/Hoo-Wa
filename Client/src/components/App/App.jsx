@@ -33,7 +33,7 @@ function App() {
       <Route path="/" exact component={Home}>
 
       </Route>
-
+      
       </BrowserRouter>
     </div>
   );
