@@ -1,5 +1,6 @@
 
    @import url('https://fonts.googleapis.com/css?family=Roboto:400,700,900');
+   @import url('https://fonts.googleapis.com/css2?family=Barlow&family=Calligraffitti&family=PT+Sans&family=Poppins&display=swap');
 
    
    html {
@@ -236,4 +237,61 @@
 
 .sidebar > button:hover {
   color: #D3D3D3
+}
+
+.home-text{
+  width: 50%;
+  height: 20vh;
+  margin-top: 2rem;
+  margin-right: 24rem;
+  font-size: 2rem;
+  line-height: 3.5rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 800px) {
+  .sidebar{
+    width: 50%;
+  }
+  .sidebar > img {
+    width: 80%;
+  }
+  .sidebar > h5 {
+    margin-top: -1rem;
+  }
+}
+
+// Song---------------------------------------------
+.flex-container{
+  border: 2px solid white;
+  width: 20%;
+  height: 30vh;
+  text-align: center;
+  background-color: #fdeded;
+  font-family: 'Poppins', sans-serif;
+}
+
+// Category
+.cat-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+.cat-card {
+  border: 2px solid white;
+  height: 5vh;
+  width: 20%;
+  transition: var(--transition);
+  text-indent: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.cat-card:hover {
+  background-color: #f3f3f3;
 }
