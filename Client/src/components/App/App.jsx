@@ -28,7 +28,7 @@ function App() {
       <Dropdown title={"Select Language"} items={items} multiSelect />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/songs" element={<Songs />}></Route>
+        <Route path="/songs/*" element={<Songs />}></Route>
       </Routes>
     </div>
   );

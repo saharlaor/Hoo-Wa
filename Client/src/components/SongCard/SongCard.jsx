@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 //React keys
 
@@ -8,8 +9,12 @@ import React from "react";
 // each time that react lose the key and generate another one React remount the component
 
 const SongCard = ({ title, paragraph, src }) => {
+  const navigate = useNavigate()
+  const navigateTo = () => {
+    navigate(title, {replace:false})
+  }
   return (
-    <div className="card-container">
+    <div onClick={navigateTo} className="card-container">
       <h3>{title}</h3>
       <picture className="card-image-container">
         <source src={src} type=".png" />

@@ -1,19 +1,19 @@
 import React from "react";
 
-const Song = () => {
+const Song = ({title, src ,song}) => {
   return (
     <div className="flex-container">
       <div className="song-container">
         <header>
-          <h2 className="song-title">title</h2>
+          <h2 className="song-title">{title}</h2>
         </header>
         <article>
-          <p className="song">song</p>
+          <p className="song">{song}</p>
           {/* <div className="body-song">body</div> */}
         </article>
         <picture>
-          <source src="" />
-          <img width={100} height={100} src="" alt="img" />
+          <source src="" type=".png"/>
+          <img width={100} height={100} src={src} alt="img" />
         </picture>
       </div>
       <div className="song-container">
