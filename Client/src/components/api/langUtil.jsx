@@ -1,6 +1,6 @@
 import { getTranslation } from "./api";
 import React, { useState } from "react";
-import {switchCode} from "./langUtil";
+
 
 export default function App() {
   const [sourceLanguage, setSourceLanguage] = useState("");
@@ -31,3 +31,24 @@ export default function App() {
    "moo"
   );
 }
+
+function switchCode(expression) {
+
+  switch (expression) {
+    case "Hebrew":
+      return "he";
+    case "Amharic":
+      return "ar";
+    case "English":
+      return "en";
+    case "Arabic":
+      return "ar";
+    case "Russian":
+      return "ru";
+    default:
+      return "";
+  }
+}
+
+
+
